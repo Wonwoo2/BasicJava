@@ -1,0 +1,33 @@
+package testP;
+
+class Test { 
+	public static String change(String str) {
+		str += "456";
+		return str;
+	}
+	
+	public static void main(String[] args) {
+			String str = "ABC123";
+			System.out.println(str);
+			String result = change(str);
+			System.out.println("After change : " + str);
+			System.out.println("After change : " + result);
+	}
+}
+	
+
+class Student {
+	String name;
+	int ban;
+	int no;
+	int kor;
+	int eng;
+	int math;
+
+	public int getTotal() {
+		return kor + eng + math;
+	}
+	public float getAverage() {
+		return (float) (Math.round((getTotal() / (float)3) * 10.0 + 0.5f) / 10.0);
+	}
+}

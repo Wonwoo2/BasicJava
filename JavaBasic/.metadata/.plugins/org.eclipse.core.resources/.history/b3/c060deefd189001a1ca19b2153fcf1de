@@ -1,0 +1,14 @@
+package e_oop;
+
+public class TvControl {
+
+	public static void main(String[] args) {
+		TV tv = new TV();
+		
+		tv.powerOn();
+		
+		tv.channelInput(49);
+
+	}
+
+}

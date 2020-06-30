@@ -1,0 +1,17 @@
+package reservationV1;
+
+public class Area {
+	private String area;
+	int areaIndex;
+	
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	
+	public void areaSearch() {
+		System.out.print("지역을 검색해주세요 > ");
+	}
+}

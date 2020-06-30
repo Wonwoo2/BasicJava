@@ -1,0 +1,28 @@
+package e_oop;
+
+public class SimLiTestV2 {
+	void question01() {
+		System.out.print("나는 금사빠다(금방 사랑에 빠진다)");
+	}
+	void question02() {
+		System.out.print("연애할 때 끌려다니는 타입이다");
+	}
+	void question03() {
+		System.out.print("데이트 코스는 미리 짜는게 편하다");
+	}
+	void question04() {
+		
+	}
+	void question05() {
+		
+	}
+	void question06() {
+	
+	}
+	void question07() {
+	
+	}
+	void question08() {
+	
+	}
+}

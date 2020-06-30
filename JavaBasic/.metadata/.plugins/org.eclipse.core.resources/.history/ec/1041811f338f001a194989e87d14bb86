@@ -1,0 +1,19 @@
+package f_oop2;
+
+public class SampleParent { // 아무것도 상속 받지 않는 경우는 오브젝트 클래스를 상속받는다(extends Object)
+
+	String var;
+	
+	{
+		var = "초기화 블럭은 물려주지 않는다";
+	}
+	
+	SampleParent() {
+		var = "생성자도 물려주지 않는다";
+	}
+	
+	int method(int a, int b) {
+		return a + b;
+	}
+
+}

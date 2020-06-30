@@ -1,0 +1,15 @@
+package reservationV1;
+
+public class Owner {
+	private String ownerName;
+	private String ownerNumber;
+	private String ownerPhoneNumber;
+	
+	private String id;
+	private String pw;
+	private String name;
+	private String regNo;
+	private String phoneNumber;
+	private String address;
+	private String email;
+}

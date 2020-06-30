@@ -1,0 +1,17 @@
+package reservationV1;
+
+public class RoomList {
+	
+	Room[] rList = new Room[900];
+	Area a = new Area();
+
+	void RoomRegister(String roomName, String roomArea, String RoomType, String roomNumber,
+			String roomPrice, String roomPeopleNumber) {
+		boolean isArea = false;
+		for(int i = 0; i < a.area.length; i ++) {
+			if(a.area[i].equals(roomArea)) {
+				isArea = true;
+			}
+		}
+	}
+}

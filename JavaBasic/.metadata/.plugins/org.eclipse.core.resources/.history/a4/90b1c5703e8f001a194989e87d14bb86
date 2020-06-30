@@ -1,0 +1,26 @@
+package f_oop2;
+
+public class Store {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+class Product {
+	String name;
+	int price;
+	
+	Product(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+	
+	void info() {
+		System.out.println("------------------");
+		System.out.println("상품명 : " + name);
+		System.out.println("금   액 : " + price + "원");
+	}
+}

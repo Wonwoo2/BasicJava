@@ -1,0 +1,19 @@
+package reservationV1;
+
+public class Area {
+	String[] area = { "강원도", "서울", "충청남도", "충청북도", "전라남도", "전라북도", "경상남도",
+			"경상북도", "제주특별자치도" };
+	int[] areaCount = new int[area.length];
+	
+	
+	
+	public void areaSearch() {
+		System.out.print("지역을 검색해주세요 > ");
+		String areaName = e_oop.ScanUtil.nextLine();
+		for(int i = 0; i < area.length; i ++) {
+			if(area[i].equals(areaName)) {
+				areaCount[i]++;
+			}
+		}
+	}
+}

@@ -1,0 +1,49 @@
+package e_oop;
+
+public class TV {
+	boolean power = false;
+	int channel = 1;
+	int volume = 0;
+	
+	void powerOn() {
+		power = true;
+	}
+	void poowerOff() {
+		power = false;
+	}
+	
+	void channelUp() {
+		if(channel == 301) {
+			channel = 1;
+		}
+		channel += 1;
+	}
+	
+	void channelDown() {
+		if(channel == 0) {
+			channel = 300;
+		}
+		channel -= 1;
+	}
+	
+	void volumeUp() {
+		boolean volumePlusLimit = false;
+		if(volume == 40) {
+			volumePlusLimit = true;
+		}
+		if(volumePlusLimit == false) {
+			volume += 1;
+		}
+	}
+	
+	void volumeDown() {
+		boolean volumeMinusLimit = false;
+		if(volume == 0) {
+			volumeMinusLimit = true;
+		}
+		if(volumeMinusLimit == false) {
+			volume -= 1;
+		}
+	}
+	
+}

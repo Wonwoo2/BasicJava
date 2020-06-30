@@ -1,0 +1,53 @@
+package f_oop2;
+
+public class Store {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+class Product {
+	String name;
+	int price;
+	
+	Product(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+	
+	void info() {
+		System.out.println("------------------");
+		System.out.println("상품명 : " + name);
+		System.out.println("금   액 : " + price + "원");
+		System.out.println("------------------");
+	}
+}
+
+class Desktop extends Product {
+
+	Desktop(String name, int price) {
+		super("삼성 컴퓨터", 500);
+	}
+}
+
+class TV extends Product {
+
+	TV(String name, int price) {
+		super("LG TV", 1000);
+	}
+}
+
+class Customer {
+	int money = 1000000000;
+	
+	Product[] item = new Product[10]; // 장바구니
+	
+	void buy(Product p) {
+		if(money < p.price) {
+			System.out.println("돈이 부족하다");
+		}
+	}
+}

@@ -1,0 +1,8 @@
+package e_oop;
+
+class Car {
+	String model;
+	int speed;
+}
+
+

@@ -1,0 +1,27 @@
+package e_oop;
+
+public class ClassMaker2 {
+	
+	// 초기화 순서 : 명시적 초기화 -> 초기화 블럭 -> 생성자
+	
+	// 젼역변수 하나를 선언하고 명시적으로 초기화 해주세요
+	int number = 10;
+	
+	// 위에서 선언한 전역변수를 초기화 블럭을 사용해 초기화해주세요
+	{
+		for(int i = 1; i <= number; i ++) {
+			number += 1;
+		} // 반드시 여러 문장이 들어가야하는 것은 아니다. 한문장으로 초기화 해도 상관 없다
+		// ex) { number = 10; }
+	}
+	
+	// 위에서 선언한 전역변수를 생성자의 파라미터를 사용해 초기화 해주세요
+	ClassMaker2(int number) {
+		this.number = number;
+	}
+	
+	// 위에서 선언한 전역변수를 생성자를 하나 더 만들어서 초기화 해주세요
+	ClassMaker2() {
+		this(5);
+	}
+}

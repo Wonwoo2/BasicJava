@@ -1,0 +1,81 @@
+package reservationV1;
+
+public class showMenu {
+	Login lg = new Login();
+	MemberManager mbmg = new MemberManager();
+	int input = 0;
+	
+	void LoginMenu() {
+	
+		do {
+			System.out.print("0. 프로그램종료 1. 로그인 ");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 1 :
+				System.out.print("아이디 : ");
+				String id = e_oop.ScanUtil.nextLine();
+				if(lg.loginIdCheck(id)) {
+					System.out.print("비밀번호 : ");
+					String pw = e_oop.ScanUtil.nextLine();
+					if(lg.loginPwCheck(pw)) {
+						System.out.print("로그인에 성공하였습니다");
+						mbmg.loginSession(id, pw);
+						MainMenu();
+					} else {
+						System.out.print("비밀번호가 틀렸습니다. 다시 확인해주세요");
+						LoginMenu();
+					}
+				} else {
+					System.out.print("아이디가 틀렸습니다. 다시 확인해주세요");
+					LoginMenu();
+				}
+				break;
+			case 0 :
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			}
+		} while(input != 0);	
+	}
+	
+	void MainMenu() {
+		
+		
+		do {
+			System.out.print("1. 예약하기 2. 로그아웃 3. 프로그램 종료");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 1:
+				reserveMenu();
+				break;
+			case 2:
+				System.out.print("로그아웃합니다.");
+				mbmg.logoutSession();
+				LoginMenu();
+				break;
+			case 3:
+				System.out.print("프로그램을 종료합니다.");
+				break;
+			}
+		} while(input != 0);
+	}
+	
+	void reserveMenu() {
+		do {
+			System.out.print("1. 펜션 2. 호텔 3. 프로그램 종료");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 1:
+				reserveMenu();
+				break;
+			case 2:
+				break;
+			case 3:
+				
+				break;
+			}
+		} while(input != 0);
+	}
+}

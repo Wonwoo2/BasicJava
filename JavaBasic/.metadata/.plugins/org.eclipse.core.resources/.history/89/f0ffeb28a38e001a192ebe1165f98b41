@@ -1,0 +1,26 @@
+package reservationV1;
+
+public class Manager {
+	private String managerName;
+	private String managerPhoneNumber;
+	private String account;
+	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getManagerPhoneNumber() {
+		return managerPhoneNumber;
+	}
+	public void setManagerPhoneNumber(String managerPhoneNumber) {
+		this.managerPhoneNumber = managerPhoneNumber;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+}

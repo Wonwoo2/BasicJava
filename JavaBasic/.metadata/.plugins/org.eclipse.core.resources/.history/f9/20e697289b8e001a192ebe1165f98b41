@@ -1,0 +1,141 @@
+package reservationV1;
+
+public class ShowMenu {
+	Login lg = new Login();
+	MemberManager mbmg = new MemberManager();
+	AccommodationList acd = new AccommodationList();
+	
+	int input = 0; // 입력값
+	
+	
+	// 로그인 메뉴
+	void LoginMenu() {
+		if(mbmg.session == null) {
+			do {
+				System.out.print("0. 프로그램종료 1. 로그인 2. 회원가입  3. 메인화면");
+				input = e_oop.ScanUtil.nextInt();
+				
+				switch(input) {
+				case 0 :
+					System.out.println("프로그램을 종료합니다.");
+					break;
+				case 1 :
+					System.out.print("아이디 : ");
+					String id = e_oop.ScanUtil.nextLine();
+					if(lg.loginIdCheck(id)) {
+						System.out.print("비밀번호 : ");
+						String pw = e_oop.ScanUtil.nextLine();
+						if(lg.loginPwCheck(pw)) {
+							System.out.print("로그인에 성공하였습니다");
+							mbmg.loginSession(id, pw); // 로그인한 id와 pw를 넘겨준다
+							input = 0;
+							MainMenu(); // 로그인성공과 함께 메인화면 호출
+						} else {
+							System.out.print("비밀번호가 틀렸습니다. 다시 확인해주세요");
+							LoginMenu(); // 비밀번호가 틀릴 시에 다시 로그인메뉴화면를 호출
+						}
+					} else {
+						System.out.print("아이디가 틀렸습니다. 다시 확인해주세요");
+						LoginMenu(); // 아이디가 틀릴 시에 다시 로그인메뉴화면 호출
+					}
+					break;
+				case 2 :
+					mbmg.MemberJoin(); // 회원가입화면 호출
+					break;
+				case 3 :
+					input = 0;
+					MainMenu(); // 메인화면 호출
+					break;
+				}
+			} while(input != 0);
+		} else { // 로그인이 되어있을시
+			do {
+				System.out.print("0. 프로그램종료 1. 회원가입 2. 로그아웃 3. 메인화면 ");
+				input = e_oop.ScanUtil.nextInt();
+				
+				switch(input) {
+				case 0 :
+					System.out.println("프로그램을 종료합니다.");
+					break;
+				case 1 :
+					mbmg.MemberJoin(); // 회원가입화면 호출
+					break;
+					
+				case 2 :
+					input = 0;
+					mbmg.logoutSession(); // 로그인세션을 비어준다
+					LoginMenu(); // 로그인메뉴화면 호출
+					break;
+				}
+			} while(input != 0);
+		} 
+	}
+	
+	void MainMenu() { // 메인화면
+		if(mbmg.session == null) {
+			do {
+				System.out.print("0. 프로그램 종료 1. 예약하기 2. 로그아웃 3. 회원가입");
+				input = e_oop.ScanUtil.nextInt();
+				
+				switch(input) {
+				case 0:
+					System.out.print("프로그램을 종료합니다.");
+					break;
+				case 1:
+					input = 0;
+					reserveMenu(); // 예약화면 호출
+					break;
+				case 2:
+					input = 0;
+					mbmg.logoutSession();
+					LoginMenu(); // 로그아웃
+					break;
+				case 3:
+					input = 0;
+					mbmg.MemberJoin();
+					break;
+				} 
+			} while(input != 0);
+		}
+		
+	} 
+	
+	void subMenu() { // 예약하기 선택했을 때
+		do {
+			System.out.print("0. 프로그램 종료 1. 메인화면 2. 펜션 3. 호텔 4. 모텔 5. 게스트하우스 6. 검색");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 0:
+				System.out.print("프로그램을 종료합니다.");
+				break;
+			case 1:
+				input = 0;
+				MainMenu(); // 메인화면 호출
+				break;
+			case 2:
+				input = 0;
+				acd.pensionList(); // 펜션리스트를 불러온다
+				break;
+			case 3:
+				input = 0;
+				acd.hotelList();
+				break;
+			case 4:
+				input = 0;
+				acd.motelList();
+				break;
+			case 5:
+				input = 0;
+				acd.guestHouselList();
+				break;
+				
+			case 6:
+				input = 0;
+				areaSearch();
+				break;
+					
+			}
+		} while(input != 0);
+	}
+}

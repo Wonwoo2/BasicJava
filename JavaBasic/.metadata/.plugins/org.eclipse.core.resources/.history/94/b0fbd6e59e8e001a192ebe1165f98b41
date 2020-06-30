@@ -1,0 +1,13 @@
+package reservationV1;
+
+public class Area {
+	String[] area = { "강원도", "서울", "대전", "대구", "부산", "제주도", "거제도", "여수"};
+	int[] areaCount;
+	
+	public void areaSearch() {
+		System.out.print("지역을 검색해주세요 > ");
+		String areaName = e_oop.ScanUtil.nextLine();
+		
+		areaCount[]++;
+	}
+}

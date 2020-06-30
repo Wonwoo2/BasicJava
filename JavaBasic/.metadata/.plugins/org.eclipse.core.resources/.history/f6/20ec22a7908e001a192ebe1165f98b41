@@ -1,0 +1,102 @@
+package reservationV1;
+
+public class showMenu {
+	Login lg = new Login();
+	MemberManager mbmg = new MemberManager();
+	AccommodationList acd = new AccommodationList();
+	int input = 0;
+	
+	void LoginMenu() {
+	
+		do {
+			System.out.print("0. 프로그램종료 1. 로그인 2. 회원가입  3. 메인화면");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 0 :
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			case 1 :
+				System.out.print("아이디 : ");
+				String id = e_oop.ScanUtil.nextLine();
+				if(lg.loginIdCheck(id)) {
+					System.out.print("비밀번호 : ");
+					String pw = e_oop.ScanUtil.nextLine();
+					if(lg.loginPwCheck(pw)) {
+						System.out.print("로그인에 성공하였습니다");
+						mbmg.loginSession(id, pw);
+						MainMenu();
+						input = 0;
+					} else {
+						System.out.print("비밀번호가 틀렸습니다. 다시 확인해주세요");
+						LoginMenu();
+					}
+				} else {
+					System.out.print("아이디가 틀렸습니다. 다시 확인해주세요");
+					LoginMenu();
+				}
+				break;
+			
+			}
+		} while(input != 0);	
+	}
+	
+	void MainMenu() {
+		
+		
+		do {
+			System.out.print("0. 프로그램 종료 1. 예약하기 2. 로그인 3. 로그아웃 ");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 0:
+				System.out.print("프로그램을 종료합니다.");
+				break;
+			case 1:
+				reserveMenu();
+				input = 0;
+				break;
+			case 2:
+				System.out.print("로그아웃합니다.");
+				mbmg.logoutSession();
+				LoginMenu();
+				input = 0;
+				break;
+			} 
+		} while(input != 0);
+	} 
+	
+	void reserveMenu() {
+		do {
+			System.out.print("0. 프로그램 종료 1. 메인화면 2. 펜션 3. 호텔 4. 모텔 5. 게스트하우스");
+			input = e_oop.ScanUtil.nextInt();
+			
+			switch(input) {
+			case 0:
+				System.out.print("프로그램을 종료합니다.");
+				break;
+			case 1:
+				MainMenu();
+				input = 0;
+				break;
+			case 2:
+				acd.pensionList();
+				input = 0;
+				break;
+			case 3:
+				acd.hotelList();
+				input = 0;
+				break;
+			case 4:
+				acd.motelList();
+				input = 0;
+				break;
+			case 5:
+				acd.guestHouselList();
+				input = 0;
+				break;
+					
+			}
+		} while(input != 0);
+	}
+}

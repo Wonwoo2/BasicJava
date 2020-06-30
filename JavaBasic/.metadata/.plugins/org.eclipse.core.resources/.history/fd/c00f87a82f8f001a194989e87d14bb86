@@ -1,0 +1,8 @@
+package f_oop2;
+
+public class Inheritance { // 상속
+
+	public static void main(String[] args) {
+		
+	}
+}

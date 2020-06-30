@@ -1,0 +1,18 @@
+package e_oop;
+
+public class Reservation {
+	String name;
+	int phoneNumber;
+	int reserveNumber;
+	
+	public Reservation(String name, int phoneNumber, int reserveNumber) {
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.reserveNumber = reserveNumber;
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+}
+

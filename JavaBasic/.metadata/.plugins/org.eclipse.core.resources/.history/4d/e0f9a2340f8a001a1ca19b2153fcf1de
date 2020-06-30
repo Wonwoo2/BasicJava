@@ -1,0 +1,48 @@
+package e_oop;
+
+public class FanTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		Fan f = new Fan();
+		String fanFunction = null;
+
+		f.fanPowerOn();
+
+		System.out.print("무엇을 하실건가요? 세기(강풍/미풍/약풍) / 회전 / 타이머");
+		fanFunction = ScanUtil.nextLine().trim();
+		
+		switch(fanFunction) {
+		case "세기" :
+			System.out.print("강풍/미풍/약풍 고르세요");
+			fanFunction = ScanUtil.nextLine().trim();
+			f.windStrength(fanFunction);
+			break;
+		case "회전" :
+			f.fanAngle();
+			break;
+		case "타이머" :
+			f.fanTimer(30);
+			break;
+		}
+		if (fanFunction.equals("세기")) {
+			System.out.print("강풍/미풍/약풍 고르세요");
+			fanFunction = ScanUtil.nextLine().trim();
+			f.windStrength(fanFunction);
+
+		} else if (fanFunction.equals("회전")) {
+			
+		} else if(fanFunction.equals("타이머")) {
+			
+		}
+
+		fanFunction = ScanUtil.nextLine();
+
+		f.windStrength(fanFunction);
+
+		f.fanRotateOn();
+
+		f.fanPowerOn();
+		f.fanAngleAndTimer(30);
+
+	}
+}

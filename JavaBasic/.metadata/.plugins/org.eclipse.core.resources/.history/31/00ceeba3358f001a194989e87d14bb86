@@ -1,0 +1,14 @@
+package reservationV1;
+
+public class RoomList {
+	
+	Room[] rList = new Room[900];
+	Area area = new Area();
+
+	void RoomRegister(String roomName, String roomArea, String RoomType, String roomNumber,
+			String roomPrice, String roomPeopleNumber) {
+		for(int i = 0; i < rList.length; i ++) {
+			if(roomArea.)
+		}
+	}
+}

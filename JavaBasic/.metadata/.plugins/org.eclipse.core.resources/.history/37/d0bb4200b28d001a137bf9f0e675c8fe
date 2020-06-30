@@ -1,0 +1,6 @@
+package reservationV1;
+
+public class MemberJoin {
+	Member[] users = new Member[1000];
+	
+}

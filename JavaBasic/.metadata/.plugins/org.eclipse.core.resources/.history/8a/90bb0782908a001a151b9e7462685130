@@ -1,0 +1,167 @@
+package e_oop;
+
+public class Fan {
+	boolean fanPower;
+	boolean fanRotate;
+	boolean fanTimer;
+	String windStrength;
+	
+	int angle;
+	int timer;
+	
+	Fan() {
+		fanPower = false;
+		fanRotate = false;
+		fanTimer = false;
+		windStrength = "미풍";
+		angle = 90;
+		timer = 0;
+	}
+	
+	void fanPowerOn() {
+		fanPower = true;
+		System.out.println("선풍기가 켜졌습니다.");
+		System.out.println("현재 " + windStrength + "입니다.");
+	}
+	
+	void fanPowerOff() {
+		fanPower = false;
+		System.out.println("선풍기가 꺼졌습니다.");
+	}
+	
+	void selectWindStrength(String windStrength) {
+		this.windStrength = windStrength;
+		System.out.println("현재 " + this.windStrength + "입니다.");
+	}
+	
+	void startTimer() {
+		timer *= 60;
+
+		if (fanPower) {
+			for (int i = timer; i >= 0; i--) {
+				timer -= i;
+				if (i % 100 == 0) {
+					System.out.println("현재 남은 시간은 " + timer + "초입니다.");
+				}
+				if (i == 0) {
+					fanPower = false;
+				}
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	/*void fanPowerOn() {
+		fanPower = true;
+		System.out.println("선풍기가 켜졌습니다.");
+		System.out.println("현재 " + windStrength[0] + "입니다.");
+	}
+
+	void fanPowerOff() {
+		fanPower = false;
+		System.out.println("선풍기가 꺼졌습니다.");
+	}
+
+	void fanRotateOn() throws InterruptedException {
+		fanRotate = true;
+		System.out.println("선풍기를 회전을 시작합니다.");
+		fanAngle();
+	}
+
+	void fanRotateOff() {
+		fanRotate = false;
+		System.out.println("선풍기 회전을 종료합니다.");
+	}
+
+	void fanAngle() throws InterruptedException {
+		while (fanRotate && fanPower) {
+			for (int i = angle; i < 180; i++) {
+				if (angle % 10 == 0) {
+					System.out.println("선풍기 각도 : " + angle);
+				}
+				angle++;
+				Thread.sleep(100);
+			}
+			for (int i = angle; i > 0; i--) {
+				if (angle % 10 == 0) {
+					System.out.println("선풍기 각도 : " + angle);
+				}
+				angle--;
+				Thread.sleep(100);
+			}
+			System.out.print("계속 회전시키겠습니까?(Y/N)");
+			String yesOrNo = ScanUtil.nextLine().toUpperCase();
+			if (yesOrNo.equals("Y")) {
+				continue;
+			} else if (yesOrNo.equals("N")) {
+				break;
+			}
+		}
+	}
+
+	void fanTimer(int timer) throws InterruptedException {
+
+		int second = timer * 60;
+
+		if (fanPower) {
+			for (int i = second; i >= 0; i--) {
+				second -= i;
+				if (i % 100 == 0) {
+					System.out.println("현재 남은 시간은 " + second + "초입니다.");
+				}
+				if (i == 0) {
+					fanPower = false;
+				}
+				Thread.sleep(100);
+			}
+		}
+	}
+
+	void fanAngleAndTimer(int timer) throws InterruptedException {
+		int second = timer * 60;
+
+		while (fanRotate && fanPower) {
+			if (second == 0) {
+				fanPower = false;
+			}
+			for (int i = angle; i < 180; i++) {
+				if (angle % 10 == 0) {
+					System.out.println("선풍기 각도 : " + angle);
+				}
+				if (second % 100 == 0) {
+					System.out.println("현재 남은 시간은 : " + second + "초 입니다.");
+				}
+				angle++;
+				second--;
+				Thread.sleep(100);
+			}
+			for (int i = angle; i > 0; i--) {
+				if (angle % 10 == 0) {
+					System.out.println("선풍기 각도 : " + angle);
+				}
+				if (second % 100 == 0) {
+					System.out.println("현재 남은 시간은 : " + second + "초 입니다.");
+				}
+				angle--;
+				second--;
+				Thread.sleep(100);
+			}
+		}
+	}
+
+	void windStrength(String strength) {
+		if (fanPower) {
+			for (int i = 0; i < windStrength.length; i++) {
+				if (windStrength.equals(strength)) {
+					System.out.println("선풍기를 " + strength + " 입니다.");
+				}
+			}
+		}
+
+	}*/
+
+}

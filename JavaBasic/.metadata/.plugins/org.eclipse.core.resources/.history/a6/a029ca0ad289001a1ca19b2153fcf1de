@@ -1,0 +1,14 @@
+package e_oop;
+
+public class TvControl {
+
+	public static void main(String[] args) {
+		TV tv = new TV();
+		
+		tv.powerOn();
+		System.out.println("현재 채널은 " + tv.channel + "번 입니다.");
+		tv.channelInput(49);
+
+	}
+
+}

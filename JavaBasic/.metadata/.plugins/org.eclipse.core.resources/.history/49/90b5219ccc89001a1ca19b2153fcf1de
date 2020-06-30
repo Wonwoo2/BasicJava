@@ -1,0 +1,17 @@
+package e_oop;
+
+public class TvTest {
+
+	public static void main(String[] args) {
+		TV tv = new TV();
+		
+		tv.powerOn();
+		tv.channelUp();
+		tv.channelDown();
+		tv.volumeUp();
+		tv.volumeDown();
+		tv.powerOn();
+
+	}
+
+}

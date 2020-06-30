@@ -1,0 +1,54 @@
+package e_oop;
+
+public class TV {
+	boolean power = false;
+	int channel = 1;
+	int volume = 0;
+	
+	void powerOn() {
+		power = true;
+		System.out.println("TV가 켜졌습니다");
+	}
+	void poowerOff() {
+		power = false;
+		System.out.println("TV가 꺼졌습니다");
+	}
+	
+	void channelUp(int channel) {
+		this.channel += 1;
+		if(channel == 301) {
+			this.channel = 1;
+		}
+		System.out.println("현재 체널은 " + this.channel + " 입니다");
+	}
+	
+	void channelDown(int channel) {
+		this.channel = channel;
+		if(this.channel == 0) {
+			this.channel = 300;
+		}
+		System.out.println("현재 체널은 " + this.channel + " 입니다");
+	}
+	
+	void volumeUp(int volume) {
+		this.volume = volume;
+		boolean volumePlusLimit = false;
+		if(this.volume == 40) {
+			volumePlusLimit = true;
+		}
+		if(volumePlusLimit == false) {
+			this.volume += 1;
+		}
+	}
+	
+	void volumeDown() {
+		boolean volumeMinusLimit = false;
+		if(this.volume == 0) {
+			volumeMinusLimit = true;
+		}
+		if(volumeMinusLimit == false) {
+			volume -= 1;
+		}
+	}
+	
+}

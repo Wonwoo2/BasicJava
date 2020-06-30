@@ -1,0 +1,16 @@
+package reservationV1;
+
+public class MemberJoin {
+	Member[] users = new Member[1000];
+	int index = 0;
+	void userRegister(String id, String pw, String name, String phoneNumber, String address, String email) {
+		
+		Member user = new Member(id, pw, name, phoneNumber, address, email);
+		
+		users[index++] = user;
+	}
+	
+	void idCheck() {
+		
+	}
+}

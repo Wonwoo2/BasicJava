@@ -1,0 +1,19 @@
+package reservationV1;
+
+public class RoomList {
+	public void pensionList() {
+		
+	}
+	
+	public void hotelList() {
+		
+	}
+	
+	public void motelList() {
+		
+	}
+	
+	public void guestHouselList() {
+		
+	}
+}

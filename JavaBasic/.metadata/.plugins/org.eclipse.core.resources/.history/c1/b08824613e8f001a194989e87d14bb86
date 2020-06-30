@@ -1,0 +1,20 @@
+package f_oop2;
+
+public class Store {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+class Product {
+	String name;
+	int price;
+	
+	Product(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+}

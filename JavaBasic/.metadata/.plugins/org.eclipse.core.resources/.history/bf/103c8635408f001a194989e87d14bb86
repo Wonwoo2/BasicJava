@@ -1,0 +1,70 @@
+package reservationV1;
+
+public class RoomList {
+	
+	Room[] rList = new Room[900];
+	Area a = new Area();
+
+	void RoomRegister(String roomName, String roomArea, String roomType, String roomNumber,
+			String roomPrice, String roomPeopleNumber) {
+		for(int i = 0; i < a.area.length; i ++) {
+			if(a.area[i].equals(roomArea)) {
+				for(int j = 0; j < rList.length; j ++) {
+					if(rList[j] == null) {
+						rList[j].setRoomName(roomName);
+						rList[j].setRoomArea(roomArea);
+						rList[j].setRoomType(roomType);
+						rList[j].setRoomNumber(roomNumber);
+						rList[j].setRoomPrice(roomPrice);
+						rList[j].setRoomPeopleNumber(roomPeopleNumber);		
+					}
+				}
+			}
+		}
+	}
+	
+	void RoomSearch(String roomArea, String roomType) {
+		int rIndex = 0;
+		for(int i = 0; i < rList.length; i ++) {
+			if(rList[i].getRoomArea().equals(roomArea)) {
+				if(rList[i].getRoomType().equals(roomType)) {
+					rIndex = i;
+					showRoomList(roomType, rIndex);
+				}
+			}
+		}
+	}
+	
+	void showRoomList(String roomType, int rIndex) {
+		if(roomType.equals("펜션")) {
+			showPensionList(rIndex);
+		} else if(roomType.equals("호텔")) {
+			showHotelList(rIndex);
+		} else if(roomType.equals("모텔")) {
+			showMotelList();
+		} else if(roomType.equals("게스트하우스")) {
+			showGeustHouseList();
+		} else {
+			System.out.println("잘못선택하셨습니다");
+		}
+		
+	}
+
+	void showGeustHouseList() {
+		System.out.println("-----펜션 리스트-----");
+		for()
+		System.out.println(rList);
+	}
+
+	void showMotelList() {
+			
+	}
+
+	void showHotelList() {
+		
+	}
+
+	void showPensionList() {
+		
+	}
+}

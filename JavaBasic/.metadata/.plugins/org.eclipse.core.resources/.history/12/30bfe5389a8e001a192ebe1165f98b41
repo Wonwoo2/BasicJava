@@ -1,0 +1,27 @@
+package reservationV1;
+
+public class AccommodationList {
+	AccommodationList[] roomInfo = new AccommodationList[3];
+	String[] areaList;
+	
+	String roomName;
+	String roomNumber;
+	String roomPrice;
+	String roomPeopleNumber;
+
+	public void pensionList() {
+		
+	}
+	
+	public void hotelList() {
+		
+	}
+	
+	public void motelList() {
+		
+	}
+	
+	public void guestHouselList() {
+		
+	}
+}

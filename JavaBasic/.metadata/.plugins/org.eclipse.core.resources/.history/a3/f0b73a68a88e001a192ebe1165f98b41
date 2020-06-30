@@ -1,0 +1,24 @@
+package reservationV1;
+
+public class Login {
+	
+	MemberManager mm = new MemberManager();
+	
+	boolean loginIdCheck(String id) {
+		for(int i = 0; i < mm.users.length; i ++) {
+			if(mm.users[i].getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	boolean loginPwCheck(String pw) {
+		for(int i = 0; i < mm.users.length; i ++) {
+			if(mm.users[i].getPw().equals(pw)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+}

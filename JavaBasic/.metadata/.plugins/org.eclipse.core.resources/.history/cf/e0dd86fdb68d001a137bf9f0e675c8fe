@@ -1,0 +1,29 @@
+package reservationV1;
+
+public class MemberJoin {
+	Member[] users = new Member[1000];
+	int index = 0;
+	void userRegister(String id, String pw, String name, String regNo, String phoneNumber, String address, String email) {
+		
+		Member user = new Member();
+		user.setId(id);
+		user.setPw(pw);
+		user.setName(name);
+		user.setRegNo(regNo);
+		user.setPhoneNumber(phoneNumber);
+		user.setAddress(address);
+		
+		users[index++] = user;
+	}
+	
+	boolean idCheck(String id) {
+		for(int i = 0; i < users.length; i ++) {
+			if(users[i].getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	pwCheck()
+}

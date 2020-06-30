@@ -1,0 +1,9 @@
+package f_oop2;
+
+public class SampleChild extends SampleParent{
+
+	public static void main(String[] args) {
+		
+	}
+
+}

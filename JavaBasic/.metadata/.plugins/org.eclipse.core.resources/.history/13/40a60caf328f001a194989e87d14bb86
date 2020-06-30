@@ -1,0 +1,7 @@
+package reservationV1;
+
+public class RoomList {
+	void RoomRegister() {
+		
+	}
+}

@@ -1,0 +1,40 @@
+package reservationV1;
+
+public class Owner {
+	private String ownerName;
+	private String ownerNumber;
+	private String ownerPhoneNumber;
+	private String ownerAddress;
+	private String ownerEmail;
+	
+	public String getOwnerName() {
+		return ownerName;
+	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+	public String getOwnerNumber() {
+		return ownerNumber;
+	}
+	public void setOwnerNumber(String ownerNumber) {
+		this.ownerNumber = ownerNumber;
+	}
+	public String getOwnerPhoneNumber() {
+		return ownerPhoneNumber;
+	}
+	public void setOwnerPhoneNumber(String ownerPhoneNumber) {
+		this.ownerPhoneNumber = ownerPhoneNumber;
+	}
+	public String getOwnerAddress() {
+		return ownerAddress;
+	}
+	public void setOwnerAddress(String ownerAddress) {
+		this.ownerAddress = ownerAddress;
+	}
+	public String getOwnerEmail() {
+		return ownerEmail;
+	}
+	public void setOwnerEmail(String ownerEmail) {
+		this.ownerEmail = ownerEmail;
+	}
+}

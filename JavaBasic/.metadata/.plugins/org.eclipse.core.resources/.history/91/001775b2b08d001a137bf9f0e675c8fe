@@ -1,0 +1,10 @@
+package reservationV1;
+
+public class MemberJoin {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

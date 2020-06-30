@@ -1,0 +1,11 @@
+package reservationV1;
+
+public class RoomList {
+	
+	int roomIndex;
+	Room[] rList = new Room[roomIndex];
+	
+	void RoomRegister() {
+		
+	}
+}

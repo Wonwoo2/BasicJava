@@ -1,0 +1,55 @@
+package testP;
+
+public class Test {
+	static Game[] weapon = new Game[3];
+
+	{
+		Game ts = new Game();
+		ts.n = "s";
+		ts.s = 73;
+		weapon[0] = ts;
+	}
+	
+	{
+		Game ts2 = new Game();
+		ts2.n = "a";
+		ts2.s = 93;
+		weapon[1] = ts2;
+	}
+	
+	
+	{
+		Game ts3 = new Game();
+		ts3.n = "d";
+		ts3.s = 90;
+		weapon[2] = ts3;
+	}
+	
+	static void change(Game ts1) {
+		for(int i = 0; i < weapon.length; i ++) {
+			weapon[i] = ts1;
+		}
+		System.out.println(weapon[0]);
+	}
+	
+	public static Game[] getWeapon() {
+		return weapon;
+	}
+
+	public static void setWeapon(Game[] weapon) {
+		Test.weapon = weapon;
+	}
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+}
+
+}
+
+class Game{
+	String n;
+	int s;
+}

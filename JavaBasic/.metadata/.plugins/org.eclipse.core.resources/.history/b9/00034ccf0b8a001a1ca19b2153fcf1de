@@ -1,0 +1,30 @@
+package e_oop;
+
+public class FanTest {
+
+	public static void main(String[] args) throws InterruptedException {
+		Fan f = new Fan();
+		String fanFunction = null;
+		
+		f.fanPowerOn();
+
+		System.out.print("무엇을 하실건가요? 선풍기On/Off");
+		fanFunction = ScanUtil.nextLine().toUpperCase();
+		if (fanFunction.equals("ON")) {
+			
+		} else if (fanFunction.equals("OFF")){
+			f.fanPowerOff();
+		}
+		
+		
+		fanFunction = ScanUtil.nextLine();
+		
+		f.windStrength(fanFunction);
+
+		f.fanRotateOn();
+		
+		f.fanPowerOn();
+		f.fanAngleAndTimer(30);
+
+	}
+}

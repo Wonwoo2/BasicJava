@@ -1,0 +1,9 @@
+package reservationV1;
+
+public class RoomList {
+	RoomList[] rList = 
+	
+	void RoomRegister() {
+		
+	}
+}

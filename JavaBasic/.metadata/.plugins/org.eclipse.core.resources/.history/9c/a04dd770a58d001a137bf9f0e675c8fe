@@ -1,0 +1,29 @@
+package testP;
+
+class Test { 
+	public static void main(String[] args) {
+		
+			System.out.println(getDistance(3, 2, 2, 2));
+		}
+	static double getDistance(int x, int y, int x1, int y1) {
+		return (double)((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
+		/*return (double)Math.sqrt(Math.pow(x1 - x, 2) + Math.pow(y1 - y, 2));*/
+	}
+}
+	
+
+class Student {
+	String name;
+	int ban;
+	int no;
+	int kor;
+	int eng;
+	int math;
+
+	public int getTotal() {
+		return kor + eng + math;
+	}
+	public float getAverage() {
+		return (float) (Math.round((getTotal() / (float)3) * 10.0 + 0.5f) / 10.0);
+	}
+}

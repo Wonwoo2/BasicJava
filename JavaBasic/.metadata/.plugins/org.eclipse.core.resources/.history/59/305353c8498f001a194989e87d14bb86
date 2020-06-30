@@ -1,0 +1,181 @@
+package reservationV1;
+
+public class MemberManager {
+	ShowMenu show = new ShowMenu();
+	Account ac = new Account();
+
+
+	Member[] users = new Member[100];
+	Owner[] owners = new Owner[100];
+
+	Member session;
+	Owner ownerSession;
+	int memberIndex = 0;
+	int ownerIndex = 0;
+	int loginIndex = 0;
+	
+	void InputOwnerAccountInfo() {
+		System.out.println("계좌를 등록합니다");
+		System.out.print("은행이름 : ");
+		String bankName = e_oop.ScanUtil.nextLine();
+		System.out.print("계좌번호 : ");
+		int account = e_oop.ScanUtil.nextInt();
+		System.out.print("비밀번호 : (4자리)");
+		int accountPWD = e_oop.ScanUtil.nextInt();
+		
+		
+	}
+	
+	void ownerAccountRegister(String ownNumber, String bankName, int account, int accountPWD) {	
+		for(int i = 0; i < ac.bankAccount.length; i ++) {
+			if(owners[i].getOwnerNumber().equals(ownNumber)) {
+				ac.bankAccount[i].setAccount(account);
+				ac.bankAccount[i].setAccountPWD(accountPWD);
+				ac.bankAccount[i].setBankName(bankName);
+			}
+		}
+		System.out.println("계좌를 등록하였습니다.");
+		show.ownerMainMenu();
+	}
+
+	public void userRegister(String id, String pw, String name, String regNo,
+			String phoneNumber, String address, String email) {
+
+		Member user = new Member();
+		user.setId(id);
+		user.setPw(pw);
+		user.setName(name);
+		user.setRegNo(regNo);
+		user.setPhoneNumber(phoneNumber);
+		user.setAddress(address);
+		user.setEmail(email);
+
+		users[memberIndex++] = user;
+	}
+	
+	public void ownerRegister(String ownerName, String ownerNumber,
+			String ownerPhoneNumber, String ownerAddress, String ownerEmail) {
+		Owner owner = new Owner();
+
+		owner.setOwnerName(ownerName);
+		owner.setOwnerNumber(ownerNumber);
+		owner.setOwnerPhoneNumber(ownerPhoneNumber);
+		owner.setOwnerAddress(ownerAddress);
+		owner.setOwnerEmail(ownerEmail);
+
+		owners[ownerIndex++] = owner;
+	}
+
+	void withDraw(String id, String pw) {
+		for (int i = 0; i < users.length; i++) {
+			if (users[i].getId().equals(id)) {
+				users[i] = null;
+			}
+		}
+	}
+
+	void loginSession(String id, String pw) {
+		for (int i = 0; i < users.length; i++) {
+			if (users[i].getId().equals(id)) {
+				session = users[i];
+				loginIndex = i;
+			}
+		}
+	}
+
+	void ownLoginSession(String ownNum) {
+		for (int i = 0; i < owners.length; i++) {
+			if (owners[i].getOwnerNumber().equals(ownNum)) {
+				ownerSession = owners[i];
+				loginIndex = i;
+			}
+		}
+	}
+
+	void logoutSession() {
+		System.out.print("로그아웃합니다.");
+		session = null;
+		ownerSession = null;
+	}
+
+	void MemberJoin() {
+		int input = 0;
+		
+		System.out.print("1. 개인 2. 사업자");
+		input = e_oop.ScanUtil.nextInt();
+		if(input == 1) {
+			System.out.print("아이디를 입력하세요 : ");
+			String memID = e_oop.ScanUtil.nextLine();
+			if (idCheck(memID)) {
+				System.out.print("아이디가 중복입니다");
+				MemberJoin();
+			} else {
+				System.out.print("비밀번호를 입력하세요 : ");
+				String memPW = e_oop.ScanUtil.nextLine();
+				
+				if(pwlengthCheck(memPW)) {
+					System.out.print("이름를 입력하세요 :");
+					String memName = e_oop.ScanUtil.nextLine();
+					System.out.print("주민등록번호를 입력하세요 :");
+					String memRegNo = e_oop.ScanUtil.nextLine();
+					System.out.print("연락처를 입력하세요 :");
+					String memPhoneNumber = e_oop.ScanUtil.nextLine();
+					System.out.print("주소를 입력하세요 :");
+					String memADDR = e_oop.ScanUtil.nextLine();
+					System.out.print("이메일을 입력하세요 :");
+					String memEmail = e_oop.ScanUtil.nextLine();
+					System.out.print("회원가입을 성공하였습니다.");
+					userRegister(memID, memPW, memName, memRegNo, memPhoneNumber, memADDR, memEmail);
+					show.LoginMenu();
+				}
+				else {
+					System.out.print("비밀번호가 너무 짧습니다");
+					MemberJoin();
+				}
+			}
+		} else {
+			System.out.print("이름을 입력하세요 : ");
+			String ownName = e_oop.ScanUtil.nextLine();
+			System.out.print("사업자등록번호을 입력하세요 : ");
+			String ownNum = e_oop.ScanUtil.nextLine();
+			if(ownNumberCheck(ownNum)) {
+				System.out.print("사업자등록번호을 입력하세요 : ");
+				String ownphoneNumber = e_oop.ScanUtil.nextLine();
+				System.out.print("주소를 입력하세요 : ");
+				String ownADDR = e_oop.ScanUtil.nextLine();
+				System.out.print("이메일을 입력하세요 : ");
+				String ownEmail = e_oop.ScanUtil.nextLine();
+				System.out.print("회원가입을 성공하였습니다.");
+				show.LoginMenu();
+			} else {
+				System.out.print("사업자등록번호가 이미 존재합니다.");
+				MemberJoin();
+			}
+		}
+	}
+
+	boolean ownNumberCheck(String number) {
+		for (int i = 0; i < owners.length; i ++) {
+			if(owners[i].getOwnerNumber().equals(number)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	boolean idCheck(String id) {
+		for (int i = 0; i < users.length; i++) {
+			if (users[i].getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	boolean pwlengthCheck(String pw) {
+		if (pw.length() > 6) {
+			return true;
+		}
+		return false;
+	}
+}

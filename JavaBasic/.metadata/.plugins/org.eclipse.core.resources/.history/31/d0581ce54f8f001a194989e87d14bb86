@@ -1,0 +1,28 @@
+package reservationV1;
+
+public class Account {
+	Account[] bankAccount = new Account[1000];
+	
+	private int account;
+	private int accountPWD;
+	private String bankName;
+	
+	public int getAccount() {
+		return account;
+	}
+	public void setAccount(int account) {
+		this.account = account;
+	}
+	public int getAccountPWD() {
+		return accountPWD;
+	}
+	public void setAccountPWD(int accountPWD) {
+		this.accountPWD = accountPWD;
+	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+}
