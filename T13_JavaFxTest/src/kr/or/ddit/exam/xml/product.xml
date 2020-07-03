@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ibatis_product">
+
+<!-- 해당하는 Product을 조회하기 위한 SELECT 쿼리 -->
+<select id="getIsProdList" parameterClass="String" resultClass="pd">
+	SELECT * FROM prod
+	WHERE prod_lgu = #prod_lgu#
+</select>
+
+</sqlMap>

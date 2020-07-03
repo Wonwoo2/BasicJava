@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane fx:controller="kr.or.ddit.exam2.controller.MemberController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <TableView fx:id="mem_tbView" prefHeight="300.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="88.0" text="회원ID" />
+          <TableColumn fx:id="name" prefWidth="137.0" text="회원이름" />
+            <TableColumn fx:id="tel" prefWidth="156.0" text="회원전화" />
+            <TableColumn fx:id="addr" prefWidth="218.0" text="회원주소" />
+        </columns>
+      </TableView>
+   </bottom>
+   <top>
+      <VBox prefHeight="200.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="회원 ID : " textAlignment="CENTER" />
+                  <TextField fx:id="id_Txt" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="회원 이름 : " />
+                  <TextField fx:id="name_Txt" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="회원 전화 : " />
+                  <TextField fx:id="tel_Txt" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="70.0" text="회원 주소 : " />
+                  <TextField fx:id="addr_Txt" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="add_Btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="추가" onAction="#add"/>
+                  <Button fx:id="edit_Btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="수정" onAction="#edit"/>
+                  <Button fx:id="del_Btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="삭제" onAction="#del"/>
+                  <Button fx:id="confirm_Btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="확인" />
+                  <Button fx:id="cancel_Btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="취소" onAction="#cancel"/>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </VBox>
+   </top>
+</BorderPane>
