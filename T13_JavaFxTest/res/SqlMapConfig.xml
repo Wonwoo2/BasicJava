@@ -23,6 +23,9 @@
 	<typeAlias alias="pd" type="kr.or.ddit.exam.vo.ProdVO"/>
 	<typeAlias alias="lpd" type="kr.or.ddit.exam.vo.LProdVO"/>
 	<typeAlias alias="mv" type="kr.or.ddit.exam2.vo.MemberVO"/>
+	<typeAlias alias="zv" type="kr.or.ddit.exam3.vo.ZipVO"/>
+	<typeAlias alias="lp" type="kr.or.ddit.exam5.vo.LProd"/>
+	<typeAlias alias="p" type="kr.or.ddit.exam5.vo.Prod"/>
 
 	<!-- 
 	DB와의 연결을 처리하는 부분
@@ -64,6 +67,9 @@
 	<sqlMap resource="kr/or/ddit/exam/xml/product.xml"/>
 	<sqlMap resource="kr/or/ddit/exam/xml/lproduct.xml"/>
 	<sqlMap resource="kr/or/ddit/exam2/xml/Member.xml"/>
+	<sqlMap resource="kr/or/ddit/exam3/xml/Zip.xml"/>
+	<sqlMap resource="kr/or/ddit/exam5/xml/product.xml"/>
+	<sqlMap resource="kr/or/ddit/exam5/xml/lproduct.xml"/>
 	
 </sqlMapConfig>
 

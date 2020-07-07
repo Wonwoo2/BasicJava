@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="prod">
+
+<!-- 해당하는 Product을 조회하기 위한 SELECT 쿼리 -->
+<select id="getIsProdList" parameterClass="String" resultClass="p">
+	SELECT * FROM prod
+	WHERE prod_lgu = #prod_lgu#
+</select>
+
+<select id="getProdList" resultClass="p">
+	SELECT * FROM prod
+</select>
+
+<select id="getCurrentPageList" parameterClass="java.util.Map" resultClass="p">	
+	SELECT a.*
+	FROM
+	(SELECT ROWNUM rn, a.*
+	FROM
+	(SELECT *
+	FROM prod
+	ORDER BY prod_name) a) a
+	WHERE rn BETWEEN #from# AND #to#
+</select>
+
+</sqlMap>

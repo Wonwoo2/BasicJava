@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.exam5.controller.ProdController">
+   <children>
+      <VBox layoutY="-1.0" prefHeight="400.0" prefWidth="1000.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="1000.0" spacing="50.0">
+               <children>
+                  <ComboBox fx:id="lprod_Combo" prefWidth="150.0" onAction="#lprod_clicked"/>
+                  <ComboBox fx:id="prod_Combo" prefWidth="150.0" onAction="#prod_clicked"/>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="prod_Table" layoutY="65.0" minHeight="-Infinity" prefHeight="281.0" prefWidth="1000.0">
+        <columns>
+          <TableColumn fx:id="prod_id" prefWidth="115.0" text="PROD_ID" />
+          <TableColumn fx:id="prod_name" prefWidth="127.0" text="PROD_NAME" />
+            <TableColumn fx:id="prod_lgu" minWidth="1.0" prefWidth="118.0" text="PROD_LGU" />
+            <TableColumn fx:id="prod_buyer" prefWidth="118.0" text="PROD_BUYER" />
+            <TableColumn fx:id="prod_cost" minWidth="0.0" prefWidth="105.0" text="PROD_COST" />
+            <TableColumn fx:id="prod_sale" minWidth="0.0" prefWidth="109.0" text="PROD_SALE" />
+            <TableColumn fx:id="prod_outline" minWidth="0.0" prefWidth="153.0" text="PROD_OUTLINE" />
+            <TableColumn fx:id="prod_detail" minWidth="0.0" prefWidth="154.0" text="PROD_DETAIL" />
+        </columns>
+      </TableView>
+      <Pagination fx:id="prodPage" layoutY="65.0" prefHeight="335.0" prefWidth="1000.0" />
+   </children>
+</AnchorPane>
