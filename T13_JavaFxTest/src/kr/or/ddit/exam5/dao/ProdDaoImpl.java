@@ -49,7 +49,7 @@ public class ProdDaoImpl implements IProdDao {
 	}
 
 	@Override
-	public List<Prod> getCurrentPageList(Map<String, Integer> param) {
+	public List<Prod> getCurrentPageList(Map<String, String> param) {
 		try {
 			prodList = smc.queryForList("prod.getCurrentPageList", param);
 		} catch (SQLException e) {

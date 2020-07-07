@@ -24,6 +24,6 @@ public interface IProdDao {
 	 * 해당 페이지의 Prod 리스트 반환
 	 * @return List<Prod>
 	 */
-	public List<Prod> getCurrentPageList(Map<String, Integer> param);
+	public List<Prod> getCurrentPageList(Map<String, String> param);
 
 }

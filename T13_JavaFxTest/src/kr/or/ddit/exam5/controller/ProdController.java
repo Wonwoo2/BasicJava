@@ -53,7 +53,7 @@ public class ProdController implements Initializable{
 	private List<Prod> prodList;
 	
 	private int from, to, countForPage;
-	private Map<String, Integer> pageMap = new HashMap<>();
+	
 	private ObservableList<Prod> currentPage;
  	
 	public ProdController() {
@@ -68,7 +68,6 @@ public class ProdController implements Initializable{
 		obLProdList = FXCollections.observableArrayList(lprodList);
 		
 		lprod_Combo.setItems(obLProdList);
-		lprod_Combo.setValue(obLProdList.get(0));
 		
 		lprod_Combo.setCellFactory(new Callback<ListView<LProd>, ListCell<LProd>>() {
 			@Override
@@ -112,9 +111,7 @@ public class ProdController implements Initializable{
 		prod_detail.setCellValueFactory(new PropertyValueFactory<>("prod_detail"));
 		prod_outline.setCellValueFactory(new PropertyValueFactory<>("prod_outline"));
 		
-		/*prod_Table.setItems(obProdList);*/
-		
-	/*	setPage(obProdList);*/
+		prod_Table.setItems(obProdList);
 	}
 
 	@FXML public void lprod_clicked(ActionEvent event) {
@@ -131,11 +128,8 @@ public class ProdController implements Initializable{
 		}
 		
 		obProdList = FXCollections.observableArrayList(prodList);
-		System.out.println(obProdList.size());
-		setPage(obProdList);
 		
 		prod_Combo.setItems(obProdList);
-		prod_Combo.setValue(obProdList.get(0));
 		
 		prod_Combo.setCellFactory(new Callback<ListView<Prod>, ListCell<Prod>>() {
 			@Override
@@ -165,16 +159,14 @@ public class ProdController implements Initializable{
 				}
 			}
 		});
-		
-		
 	}
 
 	@FXML public void prod_clicked(ActionEvent event) {
 		
 	}
 	
-	public void setPage(ObservableList<Prod> list) {
-		int totalCnt = list.size();		// 전체 레코드 수
+	public void setPage(String prod_lgu) {
+		int totalCnt = prodList.size();		// 전체 레코드 수
 		countForPage = 5;
 		
 		int totalPageCnt = ((totalCnt - 1) / countForPage) + 1;		// 전체 페이지 수
@@ -187,12 +179,14 @@ public class ProdController implements Initializable{
 				from = pageIndex * countForPage;
 				to = from + countForPage - 1;
 				
-				pageMap.put("from", from);
-				pageMap.put("to", to);
+				Map<String, String> pageMap = new HashMap<>();
+				pageMap.put("prod_lgu", prod_lgu);
+				pageMap.put("from", from + "");
+				pageMap.put("to", to + "");
 				
 				prodList = prodService.getCurrentPageList(pageMap);
+				
 				currentPage = FXCollections.observableArrayList(prodList);
-
 				
 				prod_Table.setItems(currentPage);
 				return prod_Table;

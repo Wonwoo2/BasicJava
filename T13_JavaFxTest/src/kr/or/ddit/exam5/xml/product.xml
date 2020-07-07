@@ -22,8 +22,12 @@
 	FROM
 	(SELECT *
 	FROM prod
+	<isNotEmpty property="board_title">
+		WHERE prod_lgu = #prod_lgu#
+	</isNotEmpty> 	
 	ORDER BY prod_name) a) a
 	WHERE rn BETWEEN #from# AND #to#
+
 </select>
 
 </sqlMap>

@@ -33,7 +33,7 @@ public class ProdServiceImpl implements IProdService {
 	}
 
 	@Override
-	public List<Prod> getCurrentPageList(Map<String, Integer> param) {
+	public List<Prod> getCurrentPageList(Map<String, String> param) {
 		return dao.getCurrentPageList(param);
 	}
 }
