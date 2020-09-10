@@ -21,10 +21,13 @@
 	(SELECT ROWNUM rn, a.*
 	FROM
 	(SELECT *
-	FROM prod
-	<isNotEmpty property="board_title">
-		WHERE prod_lgu = #prod_lgu#
-	</isNotEmpty> 	
+	FROM prod 
+	
+	WHERE 1 = 1
+	<isNotEmpty property="lgu">
+		AND prod_lgu = #lgu#
+	</isNotEmpty>
+	
 	ORDER BY prod_name) a) a
 	WHERE rn BETWEEN #from# AND #to#
 

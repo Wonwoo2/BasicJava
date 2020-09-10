@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할때 같이 사용한다. -->
+<sqlMap namespace="ibatis_board">
+<!-- 
+	이 영역에 sql문에 맞는 태그를 사용하여 SQL문을 기술한다.
+	
+	사용할 수 있는 기본 태그들
+	
+	<select> ~~~ </select>
+	<insert> ~~~ </insert>
+	<update> ~~~ </update>
+	<delete> ~~~ </delete>
+	
+	위 태그에서 사용되는 속성들
+	1) id속성 : 해당 태그를 호출할 때 <sqlMap>태그의 namespace와 연결하여 사용하는 이름
+	2) parameterClass속성 : sql문에 사용할 데이터가 들어있는 객체를 지정한다.
+						  (보통 VO클래스, 자바의 자료형이름 등이 사용된다.)
+	3) resultClass속성 : select문을 실행한 결과를 담을 객체를 지정한다
+					   (보통 VO클래스, 자바의 자료형이름 등이 사용된다.)
+
+ -->
+
+<!-- 게시판을 추가하기 위한 INSERT 쿼리 -->
+<insert id="insertBoard" parameterClass="bd">
+	INSERT INTO jdbc_board
+	(board_no, board_title, board_writer, board_date, board_content) 
+	VALUES (board_seq.NEXTVAL, #board_title#, #board_writer#, #board_date#, #board_content:CLOB#)
+</insert>
+
+<!-- 게시판의 제목과 내용을 수정하기 위한 UPDATE 쿼리 -->
+<update id="updateBoard" parameterClass="bd">
+	UPDATE jdbc_board 
+	SET board_title = #board_title#, 
+		board_content = #board_content#  
+		WHERE board_no = #board_no#
+</update>
+
+<!-- 파라미터로 받은 게시글 번호를 통해 게시판을 삭제하는 DELETE 쿼리 -->
+<delete id="deleteBoard" parameterClass="Integer">
+	DELETE FROM jdbc_board WHERE board_no = #board_no#
+</delete>
+
+<!-- 전체 게시판을 조회하기 위한 SELECT 쿼리 -->
+<select id="getBoardList" resultClass="bd">
+	SELECT * FROM jdbc_board
+</select>
+
+<!-- 하나의 게시판을 조회하기 위한 SELECT 쿼리 -->
+<select id="getBoard" parameterClass="Integer" resultClass="bd">
+	SELECT * FROM jdbc_board WHERE board_no = #board_no#
+</select>
+
+<!-- 게시판이 존재하는 지 조회하기 위한 SELECT 쿼리 -->
+<select id="isBoard" parameterClass="Integer" resultClass="int">
+	SELECT COUNT(*) FROM jdbc_board WHERE board_no = #board_no#
+</select>
+
+<resultMap id="boardGetCLOB" class="bd">
+	<result property="board_no" column="board_no"/>
+	<result property="board_title" column="board_title"/>
+	<result property="board_writer" column="board_writer"/>
+	<result property="board_date" column="board_date"/>
+	<result property="board_content" column="board_content" jdbcType="CLOB" javaType="java.lang.String"/>
+</resultMap>
+
+<!-- 게시판 검색을 위한 SELECT 쿼리 -->
+<select id="searchBoard" parameterClass="bd" resultClass="bd">
+
+	SELECT * FROM jdbc_board
+	WHERE 1 = 1
+	<!-- <dynamic prepend="WHERE">
+		<isNotEqual compareValue="0" prepend="AND" property="board_no">
+			board_no = #board_no#
+		</isNotEqual>
+		<isNotNull prepend="AND" property="board_title">
+			board_title = #board_title#
+		</isNotNull>
+		<isNotNull prepend="AND" property="board_writer">
+			board_writer = #board_writer#
+		</isNotNull>
+		<isNotNull prepend="AND" property="board_content">
+			DBMS_LOB.SUBSTR(board_content, DBMS_LOB.GETLENGTH(board_content)) = #board_content#
+			DBMS_lob.compare(board_content, to_clob(#board_content#)) = 0
+			board_content LIKE '%' || #board_content# || '%'
+		</isNotNull>
+	</dynamic> -->
+	
+	<isNotEqual compareValue="0" property="board_no">
+		AND board_no = #board_no#
+	</isNotEqual>
+	<isNotEmpty property="board_title">
+		AND board_title = #board_title#
+	</isNotEmpty>
+	<isNotEmpty property="board_writer">
+		AND board_writer = #board_writer#
+	</isNotEmpty>
+	<isNotEmpty property="board_content">
+<!-- 	AND DBMS_LOB.SUBSTR(board_content, DBMS_LOB.GETLENGTH(board_content)) = #board_content#
+		AND	DBMS_lob.compare(board_content, to_clob(#board_content#)) = 0 -->
+		AND	board_content LIKE '%' || #board_content# || '%'
+	</isNotEmpty>
+		
+	
+</select>
+</sqlMap>

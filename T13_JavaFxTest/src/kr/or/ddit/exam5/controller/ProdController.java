@@ -68,11 +68,12 @@ public class ProdController implements Initializable{
 		obLProdList = FXCollections.observableArrayList(lprodList);
 		
 		lprod_Combo.setItems(obLProdList);
+		lprod_Combo.setValue(obLProdList.get(0));
 		
 		lprod_Combo.setCellFactory(new Callback<ListView<LProd>, ListCell<LProd>>() {
 			@Override
 			public ListCell<LProd> call(ListView<LProd> param) {
-				return new ListCell<LProd>() {
+				return new ListCell<LProd> () {
 					protected void updateItem(LProd item, boolean empty) {
 						super.updateItem(item, empty);
 						
@@ -99,19 +100,18 @@ public class ProdController implements Initializable{
 		});
 		
 		prodList = prodService.getProdList();
-		
 		obProdList = FXCollections.observableArrayList(prodList);
 		
 		prod_id.setCellValueFactory(new PropertyValueFactory<>("prod_id"));
 		prod_name.setCellValueFactory(new PropertyValueFactory<>("prod_name"));
 		prod_lgu.setCellValueFactory(new PropertyValueFactory<>("prod_lgu"));
 		prod_buyer.setCellValueFactory(new PropertyValueFactory<>("prod_buyer"));
-		prod_cost.setCellValueFactory(new PropertyValueFactory<>("prod_cost"));
+		prod_cost.setCellValueFactory(new PropertyValueFactory<>("prod_sale"));
 		prod_sale.setCellValueFactory(new PropertyValueFactory<>("prod_sale"));
 		prod_detail.setCellValueFactory(new PropertyValueFactory<>("prod_detail"));
 		prod_outline.setCellValueFactory(new PropertyValueFactory<>("prod_outline"));
-		
-		prod_Table.setItems(obProdList);
+
+		setPage("");
 	}
 
 	@FXML public void lprod_clicked(ActionEvent event) {
@@ -123,13 +123,10 @@ public class ProdController implements Initializable{
 		
 		prodList = prodService.getIsProductList(lv.getLprod_Gu());
 		
-		if(prodList.size() < 1) {
-			return;
-		}
-		
-		obProdList = FXCollections.observableArrayList(prodList);
+		setPage(lv.getLprod_Gu());
 		
 		prod_Combo.setItems(obProdList);
+		prod_Combo.setValue(obProdList.get(0));
 		
 		prod_Combo.setCellFactory(new Callback<ListView<Prod>, ListCell<Prod>>() {
 			@Override
@@ -165,27 +162,36 @@ public class ProdController implements Initializable{
 		
 	}
 	
+	
 	public void setPage(String prod_lgu) {
-		int totalCnt = prodList.size();		// 전체 레코드 수
+		if(prodList.size() < 1) {
+			return;
+		}
+		
+		obProdList = FXCollections.observableArrayList(prodList);
+		
+		int total = obProdList.size();
 		countForPage = 5;
 		
-		int totalPageCnt = ((totalCnt - 1) / countForPage) + 1;		// 전체 페이지 수
+		int totalPage = ((total - 1) / countForPage) + 1;		// 전체 페이지 수
 		
-		prodPage.setPageCount(totalPageCnt);
+		prodPage.setPageCount(totalPage);
 		
-		prodPage.setPageFactory(new Callback<Integer, Node>( ) {
+		prodPage.setPageFactory(new Callback<Integer, Node>() {
 			@Override
 			public Node call(Integer pageIndex) {
-				from = pageIndex * countForPage;
+				from = pageIndex * countForPage + 1;
 				to = from + countForPage - 1;
 				
 				Map<String, String> pageMap = new HashMap<>();
-				pageMap.put("prod_lgu", prod_lgu);
+				
+				if(!prod_lgu.equals("")) {
+					pageMap.put("lgu", prodList.get(0).getProd_lgu());
+				}
 				pageMap.put("from", from + "");
 				pageMap.put("to", to + "");
 				
 				prodList = prodService.getCurrentPageList(pageMap);
-				
 				currentPage = FXCollections.observableArrayList(prodList);
 				
 				prod_Table.setItems(currentPage);
